@@ -12,6 +12,8 @@ host by direct configuration, which the contract's discovery step allows.
 | Path | What a host does with it |
 |---|---|
 | `schemas/capability-*.schema.json` | validates `estate.survey` input and output |
+| `schemas/project-detail-*.schema.json` | validates `project.detail` input and output |
+| `schemas/project-timeline-*.schema.json` | validates `project.timeline` input and output |
 | `schemas/record-*.schema.json` | validates `project.record` input and output |
 | `fixtures/*.json` | bounded, non-publishing admission probes |
 | `probes/assertions.md` | what each probe asserts, in prose |

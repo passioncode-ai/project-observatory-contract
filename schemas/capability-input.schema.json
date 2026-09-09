@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://raw.githubusercontent.com/ssheleg/project-observatory-contract/rev-3/schemas/capability-input.schema.json",
+  "$id": "https://raw.githubusercontent.com/ssheleg/project-observatory-contract/rev-4/schemas/capability-input.schema.json",
   "title": "estate.survey — input",
   "description": "Selects the scope to survey. An absent scope means the whole estate visible to this machine.",
   "type": "object",
@@ -9,9 +9,17 @@
     "scope": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["kind"],
+      "required": [
+        "kind"
+      ],
       "properties": {
-        "kind": { "enum": ["estate", "owner", "project"] },
+        "kind": {
+          "enum": [
+            "estate",
+            "owner",
+            "project"
+          ]
+        },
         "value": {
           "type": "string",
           "minLength": 1,
@@ -27,7 +35,18 @@
     "asOfScanId": {
       "type": "string",
       "minLength": 1,
-      "description": "Answer from a recorded scan instead of the latest one. Absent means latest."
+      "description": "The scan the caller wants the answer compared against. RECORDED, NOT HONOURED: the registry is not versioned per scan, so the answer always carries the current estate and `scanId` names the scan it reflects. A pin to any other recorded scan is reported in `degraded` rather than silently applied — measured 2026-09-08, a pin two days old returned identical counts. Whether to honour it is OQ-0016."
+    },
+    "limit": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 200,
+      "description": "Return at most this many projects. Omit for all of them. There is no default on purpose: a default page size would truncate every existing caller's answer silently, and an answer must declare what it left out. An estate survey is about 30,000 tokens unpaged (measured 2026-09-07: 119,288 bytes for 152 projects; one project is 2,785)."
+    },
+    "cursor": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Continue after this project id, taken from a previous answer's nextCursor. Pair it with asOfScanId: ordering is by project id and is stable, but a project appearing between two calls would shift an unpinned walk."
     }
   }
 }
