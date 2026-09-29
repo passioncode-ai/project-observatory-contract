@@ -1,10 +1,10 @@
 # project-observatory — Fabric contract surface
 
-The public half of [Project Observatory](https://github.com/ssheleg/project-observatory):
+The public half of the Fabric provider for [Project Observatory](https://passioncode.ai/observatory/):
 the JSON Schemas and admission fixtures a Fabric host must compile and run
 **before** any credential or project data is exchanged.
 
-The implementation stays private, and so does its provider manifest — the
+The provider implementation stays private, and so does its provider manifest — the
 manifest is an installation artefact, required by the contract to carry a
 `connection.executableRef` pointing at one machine's executable. It reaches a
 host by direct configuration, which the contract's discovery step allows.
@@ -27,4 +27,9 @@ every URI anonymously and comparing the bytes with its source, so a stale
 publication fails the source repository's own gate rather than a host's
 admission.
 
-Contract: [fabric-agent-contract](https://github.com/passioncode-ai/fabric-agent-contract) `0.1.0`.
+Contract: Fabric Agent Contract `0.1.0` (its repository is private for now).
+
+## License
+
+MIT — see [LICENSE](LICENSE). Anyone may implement, copy and redistribute these schemas,
+fixtures and assertions, including in commercial software.

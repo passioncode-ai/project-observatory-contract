@@ -6,7 +6,7 @@ This is the public contract surface of Project Observatory for Fabric hosts. It 
 Schemas, the admission fixtures and the probe assertions that a host compiles and runs before any
 credential or project data is exchanged. Everything is published under immutable `rev-N` tags.
 Source: `README.md`. It declares against
-[fabric-agent-contract](https://github.com/passioncode-ai/fabric-agent-contract) `0.1.0`.
+the Fabric Agent Contract `0.1.0` (a private repository; do not link it from public files).
 
 ## Build and test
 
@@ -24,7 +24,10 @@ gate, not this one.
 | `probes/assertions.md` | what each probe asserts, in prose |
 
 `schemas/`, `fixtures/`, `probes/` and `README.md` are written by the publisher. Do not edit them
-here: the next publication overwrites them. The implementation and its provider manifest stay
+here: the next publication overwrites them. `README.md` was corrected here on 2026-09-29 (no
+private links, a License section); the publisher's `README` template must carry the same text
+before its next `--publish`, or that publication reverts it. `LICENSE` (MIT, so third parties
+can implement the schemas) is owned by this repository; the publisher does not write it. The implementation and its provider manifest stay
 private (`README.md`).
 
 ## Rules in this repository
