@@ -1,4 +1,4 @@
 {
-  "scope": { "kind": "project", "value": "project:sms-activate-app-website" },
+  "scope": { "kind": "project", "value": "project:example-app" },
   "includeExternal": false
 }
