@@ -1,6 +1,6 @@
 # Project Observatory Contract
 
-Project Observatory Contract is the Fabric contract surface for
+Project Observatory Contract preserves the historical revision-4 Fabric contract surface for
 [Project Observatory](https://passioncode.ai/observatory/), the PassionCode.ai tool that watches
 every project on a machine: the JSON Schemas and admission fixtures a Fabric host must compile
 and run **before** any credential or project data is exchanged. It declares Project Observatory
@@ -46,16 +46,23 @@ python3 -m pip install jsonschema
 python3 scripts/check.py        # exit 0 green, 1 on a finding
 ```
 
-## Tags are the provider revision, and they never move
+## Current and historical contracts
 
-Every URI a manifest references is pinned to `rev-N`, where `N` is the
-`provider.revision` that manifest declares. A tag is never repointed: a changed
-schema is a new revision and a new tag. The publisher verifies this by fetching
-every URI anonymously and comparing the bytes with its source, so a stale
-publication fails the source repository's own gate rather than a host's
-admission.
+The `rev-N` tags here are immutable historical provider contracts. Preserve their schemas,
+fixtures and identifiers for consumers that pinned them; this documentation change creates
+no new revision and does not move a tag.
 
-Contract: Fabric Agent Contract `0.1.0` (its repository is private for now).
+Current Project Observatory releases carry their own schemas and fixtures in
+[`observatory/engine/fabric/`](https://github.com/passioncode-ai/project-observatory-dashboard/tree/main/observatory/engine/fabric).
+Use the release and per-file pins in the engine's
+[`fabric-contract.lock.json`](https://github.com/passioncode-ai/project-observatory-dashboard/blob/main/observatory/engine/fabric-contract.lock.json).
+The engine's publication checker verifies those release-pinned bytes. Its `--stage` and
+`--publish` operations are refused; it no longer overwrites this repository's README.
+Evidence: [`test_publish_contract.py`](https://github.com/passioncode-ai/project-observatory-dashboard/blob/main/observatory/engine/tests/test_publish_contract.py).
+
+The normative [Fabric Agent Contract](https://github.com/passioncode-ai/fabric-agent-contract)
+is public. This historical surface declares contract version `0.1.0`; the installed engine's
+manifest and lock, not this repository's old provider revision, describe its current surface.
 
 ## License
 

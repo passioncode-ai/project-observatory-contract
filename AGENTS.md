@@ -11,11 +11,11 @@
 
 ## What this repository is
 
-Project Observatory Contract: the public Fabric contract surface of Project Observatory — the
+Project Observatory Contract: the historical public Fabric contract surface of Project Observatory — the
 JSON Schemas, admission fixtures and probe assertions a Fabric host compiles and runs before any
 credential or project data is exchanged, published under immutable `rev-N` tags (`README.md`).
-It declares against the Fabric Agent Contract `0.1.0` (a private repository; do not link it from
-public files).
+It declares against the public Fabric Agent Contract `0.1.0`. Current engine releases carry
+their schemas in the engine repository; see [current and historical contracts](README.md#current-and-historical-contracts).
 
 ## Commands
 
@@ -27,26 +27,24 @@ public files).
 | MCP (register + proving call) | none of its own; Project Observatory's server answers these capabilities by name — its README's *Quick start for a new teammate* |
 
 CI (`.github/workflows/check.yml`) runs the same gate on every push to `main` and on every pull
-request. The source repository's publisher also fetches every published URI anonymously and
-compares the bytes with its source (`README.md`), so a stale publication fails that repository's
-gate as well.
+request. The engine checks its own release-pinned schema bytes separately; this repository's
+gate validates the historical surface locally.
 
 ## Where things live
 
 | Path | What a host does with it | Written by |
 |---|---|---|
-| `schemas/*.schema.json` | validates the input and output of each capability | the publisher |
-| `fixtures/*.json` | bounded, non-publishing admission probes | the publisher |
-| `probes/assertions.md` | what each probe asserts, in prose | the publisher |
-| `README.md` | what the contract is, the quick start, the licence | the publisher's `README` template, corrected here |
+| `schemas/*.schema.json` | validates the input and output of each capability | historical publisher; immutable revisions |
+| `fixtures/*.json` | bounded, non-publishing admission probes | historical publisher; immutable revisions |
+| `probes/assertions.md` | what each probe asserts, in prose | historical publisher; immutable revisions |
+| `README.md` | what the contract is, the quick start, the licence | this repository |
 | `LICENSE`, `COMMERCIAL-LICENSE.md`, `CLA.md`, `SECURITY.md`, `AGENTS.md`, `CLAUDE.md`, `scripts/`, `docs/` | this repository's own files | this repository |
 
-Do not edit the publisher's files here: the next publication overwrites them. `README.md` was
-corrected here on 2026-09-29 (no private links, a License section) and on 2026-09-30 (the
-organization's repository standard and the AGPL-3.0 licence, Fabric ADR-0092); **the publisher's
-`README` template must carry the same text before its next `--publish`, or that publication
-reverts it** ([handoff](docs/handoffs/2026-09-30-standard-agpl.md)). The implementation's provider
-manifest stays out of this repository (`README.md`).
+Keep historical schema, fixture and probe bytes unchanged unless a new provider revision is
+explicitly planned. Current engine releases publish their contract alongside their package;
+the engine's `tools/publish_contract.py` refuses `--stage` and `--publish` (covered by
+`tests/test_publish_contract.py`). This repository owns its README and documentation.
+The old 2026-09-30 handoff's template-replacement warning describes a retired publisher.
 
 ## Local rules
 
@@ -78,6 +76,17 @@ shared rules are the knowledge base's
 [rules.md](https://github.com/passioncode-ai/fabric-workspace/blob/main/knowledge/rules.md).
 Where this file is stricter, this file wins. A change to this repository's role, dependencies or
 test command updates its row in `org-index/repositories.json` in the same change.
+
+## Shared backlog
+
+[docs/backlog-sources.json](docs/backlog-sources.json) declares this repository's canonical
+local task sources and their vision goals. The [common backlog contract](https://github.com/passioncode-ai/fabric-workspace/blob/main/knowledge/backlog.md)
+owns aggregation; [the workspace backlog](https://wiki.passioncode.ai/backlog) is a derived view.
+Edit a task only in its canonical source under an agent-sync lease, retain stable IDs and
+closure receipts, and declare any new source in the manifest. Do not edit generated task
+status in the workspace or copy another repository's task into a second editable row.
+Land the source change, then run `node scripts/workspace.mjs sync` from a Fabric checkout
+(or use the scheduled sync); check the published source commit before calling it current.
 
 ## After work
 

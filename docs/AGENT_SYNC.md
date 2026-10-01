@@ -1,4 +1,4 @@
-<!-- agent-sync:generated source=project-observatory-contract@83f29df cfg=eb11b63ebef5 at=2026-09-30T23:50:33Z — regenerate with `agent_sync.py setup`, do not hand-edit -->
+<!-- agent-sync:generated source=project-observatory-contract@682b64d cfg=0519da639ea2 at=2026-10-01T15:52:10Z — regenerate with `agent_sync.py setup`, do not hand-edit -->
 
 # How documentation and coordination work in project-observatory-contract
 
@@ -28,6 +28,8 @@ None declared here. Ids live in the parent repository; reserve them there.
 ### Guarded files — a live lease is required to write these
 
 - `README.md`
+- `docs/backlog-sources.json`
+- `docs/backlog.md`
 
 ### Gates run before a change is considered done
 

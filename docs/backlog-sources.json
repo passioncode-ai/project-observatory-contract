@@ -1,0 +1,15 @@
+{
+  "schema": 1,
+  "repository": "https://github.com/passioncode-ai/project-observatory-contract",
+  "sources": [
+    {
+      "path": "docs/backlog.md",
+      "goal": "interoperability",
+      "kind": "tasks",
+      "format": "table",
+      "idColumn": "ID",
+      "titleColumn": "Item",
+      "statusColumn": "Status"
+    }
+  ]
+}

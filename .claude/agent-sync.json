@@ -8,7 +8,9 @@
   "gated": true,
   "idRegisters": {},
   "guardedFiles": [
-    "README.md"
+    "README.md",
+    "docs/backlog-sources.json",
+    "docs/backlog.md"
   ],
   "claimTags": {},
   "gates": [
