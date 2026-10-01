@@ -26,9 +26,10 @@ public files).
 | Build | none — nothing is built |
 | MCP (register + proving call) | none of its own; Project Observatory's server answers these capabilities by name — its README's *Quick start for a new teammate* |
 
-There is no hosted CI. The source repository's publisher also fetches every published URI
-anonymously and compares the bytes with its source (`README.md`), so a stale publication fails
-that repository's gate as well.
+CI (`.github/workflows/check.yml`) runs the same gate on every push to `main` and on every pull
+request. The source repository's publisher also fetches every published URI anonymously and
+compares the bytes with its source (`README.md`), so a stale publication fails that repository's
+gate as well.
 
 ## Where things live
 
