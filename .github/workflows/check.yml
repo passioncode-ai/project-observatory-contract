@@ -1,0 +1,31 @@
+name: check
+
+# The repository's gate (AGENTS.md → Commands): every schema is a valid JSON Schema and every
+# fixture validates against its capability's input schema. Exit 0 green, 1 on a finding,
+# 2 when jsonschema is missing — a 2 fails the job too, so a missing dependency is never green.
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: check-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install the gate's only dependency
+        run: python3 -m pip install "jsonschema>=4.18,<5"
+      - name: Gate
+        run: python3 scripts/check.py
