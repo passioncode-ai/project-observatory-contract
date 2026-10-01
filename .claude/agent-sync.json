@@ -1,0 +1,25 @@
+{
+  "backend": "fs",
+  "leaseBackend": "git",
+  "leaseRemote": "origin",
+  "integrationBranch": "main",
+  "leaseTtlSeconds": 2700,
+  "renewIntervalSeconds": 300,
+  "gated": true,
+  "idRegisters": {},
+  "guardedFiles": [
+    "README.md"
+  ],
+  "claimTags": {},
+  "gates": [
+    "python3 scripts/check.py"
+  ],
+  "mirror": {
+    "enabled": false,
+    "sources": []
+  },
+  "mergeLog": {
+    "file": "docs/MERGES.md",
+    "retentionDays": 7
+  }
+}
