@@ -67,7 +67,7 @@ manifest and lock, not this repository's old provider revision, describe its cur
 ## License
 
 Open source under the [GNU AGPL-3.0](LICENSE). A [commercial license](COMMERCIAL-LICENSE.md) is
-available for use that does not meet the AGPL's terms — contact@passioncode.ai.
+available for use that does not meet the AGPL's terms — [passioncode.ai/business](https://passioncode.ai/business/).
 The files as of commit `0c79d1c` (the schemas of provider revision 4) were released under the MIT
 License and remain available under it; the tags `rev-2` to `rev-4` carry no licence file.
 Contributions are accepted under the [CLA](CLA.md).
