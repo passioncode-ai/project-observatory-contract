@@ -58,8 +58,9 @@ The old 2026-09-30 handoff's template-replacement warning describes a retired pu
 - This repository is public. Nothing private may be added: no machine paths, no credentials, no
   content from private repositories.
 - Licence: `AGPL-3.0-only OR LicenseRef-PassionCode-Commercial` since 2026-09-30 (Fabric
-  ADR-0092). The files as of `0c79d1c` stay available under MIT, and the open question whether the
-  schemas should be a permissive exception is the knowledge base's CO-KB-02, not decided here.
+  ADR-0092). The files as of `0c79d1c` stay available under MIT. The knowledge base's CO-KB-02
+  (whether the schemas need a permissive exception) closed on 2026-10-19 and the schemas stay under
+  this repository's licence.
 - Land: a PR, squash-merged or fast-forwarded after `python3 scripts/check.py` exits 0.
 - **Shared registers are edited under a lease.** [docs/AGENT_SYNC.md](docs/AGENT_SYNC.md)
   (generated from `.claude/agent-sync.json` by `agent_sync.py setup`; never edited by hand) lists

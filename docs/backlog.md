@@ -6,7 +6,8 @@ from [backlog-sources.json](backlog-sources.json). Dated handoffs remain histori
 
 This repository preserves historical revision tags. Current Project Observatory schemas ship
 with the engine release, as explained in [README](../README.md#current-and-historical-contracts).
-No new provider revision is scheduled here; the schema licensing exception is the shared CO-KB-02 decision.
+No new provider revision is scheduled here. The shared CO-KB-02 decision (a schema licensing
+exception) closed on 2026-10-19 and the schemas stay under this repository's licence.
 
 | ID | Item | Status | Source |
 |---|---|---|---|
